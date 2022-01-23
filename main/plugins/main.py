@@ -20,10 +20,10 @@ from ethon.pyfunc import video_metadata
 #Don't be a MF by stealing someone's hardwork.
 forcesubtext = f"Hey there!To use this bot you've to join @{FORCESUB_UN}.\n\nAlso join @DroneBots."
 
-@Drone.on(events.NewMessage(incoming=True,func=lambda e: e.is_private))
+@Drone.on(events.NewMessage(incoming=True,func=lambda e: e.is_group))
 async def compin(event):
     db = Database(MONGODB_URI, 'videoconvertor')
-    if event.is_private:
+    if event.is_group:
         media = event.media
         if media:
             yy = await force_sub(event.sender_id)
